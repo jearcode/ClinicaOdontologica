@@ -1,0 +1,36 @@
+/* GENERAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+main {
+
+  background-color: #010100;
+  height: 100vh;
+  color: #d5d5d5;
+}
+
+.mainText{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom CSS */
+.navbar {
+  --bs-navbar-color: #d5d5d5; /* Color del texto */
+  --bs-navbar-hover-color: rgb(255, 255, 255); /* Color del texto al pasar el ratón */
+  --bs-navbar-active-color: rgb(255, 255, 255); /* Color del texto activo */
+  --bs-navbar-brand-hover-color: rgb(255, 255, 255); /* Color de la marca al pasar el ratón */
+}
+
+.dropdown-menu{
+  --bs-dropdown-link-hover-color: rgb(2, 9, 8);
+  --bs-dropdown-link-hover-bg: rgba(218, 218, 218, 0.742);
+}
