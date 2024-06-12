@@ -13,7 +13,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "odontologos")
@@ -27,11 +26,14 @@ public class Odontologo {
     private String nombre;
     @Column
     private String apellido;
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("odontologo")
+    private Set<Turno> turnos;
 
-
-    public Odontologo(String matricula, String nombre, String apellido) {
+    public Odontologo(String matricula, String nombre, String apellido, Set<Turno> turnos) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.turnos = turnos;
     }
 }

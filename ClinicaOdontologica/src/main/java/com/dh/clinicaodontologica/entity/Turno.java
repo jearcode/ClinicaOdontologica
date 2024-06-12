@@ -10,7 +10,6 @@ import lombok.Setter;
 import java.time.LocalDate;
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "turnos")
@@ -18,11 +17,13 @@ public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "paciente_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "turnos"})
     private Paciente paciente;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "odontologo_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "turnos"})
     private Odontologo odontologo;
     @Column
     private LocalDate fecha;

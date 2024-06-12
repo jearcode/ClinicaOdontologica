@@ -6,7 +6,6 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "domicilios")
@@ -26,11 +25,11 @@ public class Domicilio {
     @JsonBackReference
     private Paciente paciente;
 
-    public Domicilio(String calle, Integer numero, String localidad, String provincia) {
+    public Domicilio(String calle, Integer numero, String localidad, String provincia, Paciente paciente) {
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
         this.provincia = provincia;
+        this.paciente = paciente;
     }
-
 }
