@@ -1,6 +1,7 @@
 package com.dh.clinicaodontologica.controller;
 
 import com.dh.clinicaodontologica.entity.Paciente;
+import com.dh.clinicaodontologica.exception.ResourceNotFoundException;
 import com.dh.clinicaodontologica.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,8 +70,8 @@ public class PacienteController {
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) {
+/*    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         ResponseEntity<String> responseEntity;
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(id);
         if (pacienteBuscado.isPresent()) {
@@ -80,6 +81,17 @@ public class PacienteController {
             responseEntity = ResponseEntity.badRequest().build();
         }
         return responseEntity;
+    }*/
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
+        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(id);
+        if(pacienteBuscado.isPresent()){
+            pacienteService.eliminarPaciente(id);
+            return ResponseEntity.ok("paciente eliminado con exito");
+        }else{
+            //aca lanzamos la exception
+            throw new ResourceNotFoundException("No existe ese id : "+id);
+        }
     }
 
     @GetMapping

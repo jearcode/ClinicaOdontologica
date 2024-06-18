@@ -21,15 +21,12 @@ public class Domicilio {
     private String localidad;
     @Column
     private String provincia;
-    @OneToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
-    private Paciente paciente;
 
-    public Domicilio(String calle, Integer numero, String localidad, String provincia, Paciente paciente) {
+    public Domicilio(String calle, Integer numero, String localidad, String provincia) {
         this.calle = calle;
         this.numero = numero;
         this.localidad = localidad;
         this.provincia = provincia;
-        this.paciente = paciente;
+
     }
 }

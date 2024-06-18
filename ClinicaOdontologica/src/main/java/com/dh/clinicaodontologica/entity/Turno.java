@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,9 +28,9 @@ public class Turno {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "turnos"})
     private Odontologo odontologo;
     @Column
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
-    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDateTime fecha) {
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
