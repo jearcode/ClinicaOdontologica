@@ -171,4 +171,15 @@ body .login .btn-login {
 }
 body .login .btn-login:hover {
   background: var(--color-button-save-background-hover);
+}
+body .side-content {
+  display: grid;
+  justify-items: center;
+}
+body .side-content img {
+  display: flex;
+}
+body .side-content H1 {
+  color: white;
+  margin-top: 5%;
 }/*# sourceMappingURL=login.css.map */

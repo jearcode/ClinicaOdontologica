@@ -85,4 +85,18 @@ body{
             }
         }
     }
+    .side-content{
+        display: grid;
+        justify-items: center;
+
+        img{
+            display: flex;
+        }
+        H1{
+            color: white;
+            margin-top: 5%;
+        }
+    }
+    
+
 }
