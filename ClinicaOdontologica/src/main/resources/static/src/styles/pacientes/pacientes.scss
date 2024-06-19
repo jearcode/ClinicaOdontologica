@@ -1,0 +1,12 @@
+@import "../../components/scss/variables";
+@import "../../components/scss/reset";
+@import "../../components/scss/fonts";
+@import "../../components/scss/header";
+@import "../../components/scss/switch";
+@import "../../components/scss/main-structure";
+
+.content-data{
+  padding-top: 3em;
+  justify-content: center;
+  display: flex;
+}
