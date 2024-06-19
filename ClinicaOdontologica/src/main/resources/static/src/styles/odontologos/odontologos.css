@@ -13,8 +13,10 @@
   //General
   --color-background: #F0F0F0;
   --color-header-background: #2081C3;
-  --color-header-items: #EFEFEF;
-  --color-header-items-hover: #FFFFFF;
+  --color-header-items: #ffffff;
+  --color-header-items-hover: #001c79;
+  --color-light: #FFFFFF;
+  --color-blue: #2081C3;
   --color-text-primary: #00426F;
   --color-text-secondary: #0D0D0D;
   --color-text-tertiary: #3A3838;
@@ -82,64 +84,68 @@ header {
   align-items: center;
   justify-content: center;
 }
-
-.logo > a {
+header .logo {
+  margin: 0 6em;
+}
+header .logo a {
   text-decoration: none;
 }
-
-.logo-content {
+header .logo a .logo-content {
   display: flex;
   align-items: center;
 }
-
-.logo-content > h2 {
+header .logo a .logo-content i {
+  color: white;
+  font-size: 2em;
+}
+header .logo a .logo-content h2 {
   padding: 0;
   margin: 0;
   color: white;
   font-weight: 700;
 }
-
-.logo-content > i {
-  color: white;
-  font-size: 2em;
-}
-
-.navbar, .logo, .options {
+header .navbar {
   margin: 0 6em;
-}
-
-.navigation {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.navbar {
   font-weight: 600;
 }
-
-/* MODIFICANDO ESTILOS BOOSTRAP */
-.nav-link {
+header .navbar .navbar-nav {
+  color: var(--color-header-items-hover);
+}
+header .navbar .navbar-nav .nav-item {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+header .navbar .navbar-nav .nav-item .nav-link {
   color: var(--color-header-items);
   font-weight: 500;
   font-size: 1em;
 }
-
-.nav-link:hover {
+header .navbar .navbar-nav .nav-item .nav-link:hover {
+  color: var(--color-header-items-hover);
+}
+header .navbar .navbar-nav .nav-item .nav-link:active {
+  color: var(--color-header-items-hover);
+}
+header .navbar .navbar-nav .nav-item .nav-link .nav-link.show {
   color: var(--color-header-items-hover);
 }
 
-ul.nav-link:hover {
-  color: var(--color-header-items-hover);
+.options {
+  margin: 0 6em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
-
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-  color: var(--color-header-items-hover);
+.options .user {
+  border: none;
+  background-color: transparent;
+  color: var(--color-header-items);
+  font-size: 25px;
 }
 
 /* SWITCH */
 .switch {
-  margin: 0 0.5em 0 0;
+  margin: 0 30% 0 0;
   background: var(--secondary-color);
   border-radius: 1000px;
   border: none;
@@ -195,6 +201,8 @@ body {
 main {
   display: flex;
   justify-content: center;
+  margin: 5%;
+  padding-left: 13%;
 }
 
 .container-flex {

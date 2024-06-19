@@ -12,8 +12,10 @@
   //General
   --color-background: #F0F0F0;
   --color-header-background: #2081C3;
-  --color-header-items: #EFEFEF;
-  --color-header-items-hover: #FFFFFF;
+  --color-header-items: #ffffff;
+  --color-header-items-hover: #001c79;
+  --color-light: #FFFFFF;
+  --color-blue: #2081C3;
   --color-text-primary: #00426F;
   --color-text-secondary: #0D0D0D;
   --color-text-tertiary: #3A3838;
@@ -81,64 +83,68 @@ header {
   align-items: center;
   justify-content: center;
 }
-
-.logo > a {
+header .logo {
+  margin: 0 6em;
+}
+header .logo a {
   text-decoration: none;
 }
-
-.logo-content {
+header .logo a .logo-content {
   display: flex;
   align-items: center;
 }
-
-.logo-content > h2 {
+header .logo a .logo-content i {
+  color: white;
+  font-size: 2em;
+}
+header .logo a .logo-content h2 {
   padding: 0;
   margin: 0;
   color: white;
   font-weight: 700;
 }
-
-.logo-content > i {
-  color: white;
-  font-size: 2em;
-}
-
-.navbar, .logo, .options {
+header .navbar {
   margin: 0 6em;
-}
-
-.navigation {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.navbar {
   font-weight: 600;
 }
-
-/* MODIFICANDO ESTILOS BOOSTRAP */
-.nav-link {
+header .navbar .navbar-nav {
+  color: var(--color-header-items-hover);
+}
+header .navbar .navbar-nav .nav-item {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+header .navbar .navbar-nav .nav-item .nav-link {
   color: var(--color-header-items);
   font-weight: 500;
   font-size: 1em;
 }
-
-.nav-link:hover {
+header .navbar .navbar-nav .nav-item .nav-link:hover {
+  color: var(--color-header-items-hover);
+}
+header .navbar .navbar-nav .nav-item .nav-link:active {
+  color: var(--color-header-items-hover);
+}
+header .navbar .navbar-nav .nav-item .nav-link .nav-link.show {
   color: var(--color-header-items-hover);
 }
 
-ul.nav-link:hover {
-  color: var(--color-header-items-hover);
+.options {
+  margin: 0 6em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
-
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-  color: var(--color-header-items-hover);
+.options .user {
+  border: none;
+  background-color: transparent;
+  color: var(--color-header-items);
+  font-size: 25px;
 }
 
 /* SWITCH */
 .switch {
-  margin: 0 0.5em 0 0;
+  margin: 0 30% 0 0;
   background: var(--secondary-color);
   border-radius: 1000px;
   border: none;
@@ -194,6 +200,8 @@ body {
 main {
   display: flex;
   justify-content: center;
+  margin: 5%;
+  padding-left: 13%;
 }
 
 .container-flex {
@@ -203,50 +211,42 @@ main {
   justify-content: flex-start;
 }
 
-.container-flex {
-  padding: 0 0 4em 5em;
-}
-
-.hero {
+.container-flex .hero {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   width: 100%;
-  margin: 2em 0;
 }
-
-.hero-title, .hero-subtitle {
+.container-flex .hero .hero-title {
   width: 100%;
 }
-
-.hero-title > h1 {
+.container-flex .hero .hero-title h1 {
   color: var(--color-text-primary);
   font-weight: 600;
   font-size: 3.5em;
 }
-
-.hero-subtitle > h3 {
+.container-flex .hero .hero-subtitle {
+  width: 100%;
+}
+.container-flex .hero .hero-subtitle h3 {
   color: var(--color-text-primary);
 }
-
-.administration {
+.container-flex .administration {
   display: flex;
   align-items: flex-start;
   width: 100%;
   flex-wrap: wrap;
 }
-
-.administration-intro {
+.container-flex .administration .administration-intro {
   width: 100%;
   padding: 1em 0;
+  margin: 2em 0;
 }
-
-.administration-intro > h4 {
+.container-flex .administration .administration-intro h4 {
   font-weight: 650;
   color: var(--color-text-secondary);
 }
-
-.card {
+.container-flex .administration .card {
   width: 18em;
   margin: 0 1em;
   display: flex;
@@ -259,35 +259,29 @@ main {
   box-shadow: var(--card-box-shadow);
   transition: all 0.25s;
 }
-
-.card:hover {
-  box-shadow: var(--card-shadow-hover);
-  border: var(--card-border-hover);
-}
-
-.card-image {
+.container-flex .administration .card .card-image {
   width: 100%;
   border-radius: 15px 15px 0 0;
 }
-
-.card-info {
+.container-flex .administration .card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border: var(--card-border-hover);
+}
+.container-flex .administration .card .card-info {
   height: 10em;
   padding: 1em;
 }
-
-.card-title {
+.container-flex .administration .card .card-info .card-title {
   color: var(--color-text-secondary);
 }
-
-.card-secondary-text {
+.container-flex .administration .card .card-info .card-secondary-text {
   color: var(--color-text-tertiary);
 }
-
-.card-button {
+.container-flex .administration .card .card-button {
   padding: 2em 1em;
+  align-self: center;
 }
-
-.card-button > a {
+.container-flex .administration .card .card-button a {
   background-color: var(--color-button-save-background);
   padding: 1em 4em;
   border-radius: 5px;
@@ -295,7 +289,6 @@ main {
   color: var(--color-button-text);
   font-weight: 700;
 }
-
-.card-button > a:hover {
+.container-flex .administration .card .card-button a:hover {
   background-color: var(--color-button-save-background-hover);
 }/*# sourceMappingURL=styles.css.map */
