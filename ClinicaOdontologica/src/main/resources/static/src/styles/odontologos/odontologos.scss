@@ -6,13 +6,21 @@
 @import "../../components/scss/main-structure";
 
 .content-data{
-  padding-top: 3em;
   justify-content: center;
   display: flex;
 }
 
-.list-table, .update-form{
-  margin: 0 5em;
+.list-table{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.table-title>h2{
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  padding-bottom: 1em;
 }
 
 /* TABLE */
@@ -36,19 +44,6 @@
   color: white;
 }
 
-.table-title>h2{
-  color: var(--color-text-secondary);
-  font-weight: 600;
-  padding: 1em 0;
-}
-
-.list-table{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
 .table {
   background-color: var(--card-background-color);
   border: var(--card-border-color);
@@ -60,11 +55,11 @@
 }
 
 .table th {
-  padding: .25rem .75rem; /* Espaciado interno de las celdas de encabezado */
+  padding: .25rem 3rem; /* Espaciado interno de las celdas de encabezado */
 }
 
 .table td {
-  padding: .25rem .75rem; /* Espaciado interno de las celdas */
+  padding: .25rem 3rem; /* Espaciado interno de las celdas */
   vertical-align: middle; /* Alineación vertical */
 }
 
@@ -110,6 +105,7 @@
 
 .update-form{
   padding: 5em 0;
+  margin: 0 5em;
   display: none;
 }
 
