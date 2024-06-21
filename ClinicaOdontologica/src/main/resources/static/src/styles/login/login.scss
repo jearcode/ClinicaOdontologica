@@ -64,7 +64,7 @@ body{
                     margin: 5px 0;
                     outline: none;
                     border-radius: 5px;
-                    color: white;
+                    color: var(--color-text-secondary);
                     &::placeholder{
                         color: var(--color-text-primary);
                     }

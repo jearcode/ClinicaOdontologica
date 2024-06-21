@@ -155,7 +155,7 @@ body .login .form-box .input-box input {
   margin: 5px 0;
   outline: none;
   border-radius: 5px;
-  color: white;
+  color: var(--color-text-secondary);
 }
 body .login .form-box .input-box input::-moz-placeholder {
   color: var(--color-text-primary);
