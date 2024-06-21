@@ -38,7 +38,7 @@ public class PacienteService {
         return pacienteRepository.findAll();
     }
 
-    public Boolean existeEmail(String email){
+    public Boolean existePacienteConEmail(String email){
         return pacienteRepository.existsPacienteByEmail(email);
     }
 

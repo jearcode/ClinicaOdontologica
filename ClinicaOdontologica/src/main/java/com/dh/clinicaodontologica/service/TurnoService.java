@@ -32,4 +32,5 @@ public class TurnoService {
     public List<Turno> listarTodos(){
         return turnoRepository.findAll();
     }
+
 }

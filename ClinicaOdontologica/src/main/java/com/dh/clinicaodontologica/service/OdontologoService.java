@@ -38,4 +38,8 @@ public class OdontologoService {
         return odontologoRepository.findAll();
     }
 
+    public Boolean existeOdontologoConMatricula(String matricula){
+        return odontologoRepository.existsOdontologoByMatricula(matricula);
+    }
+
 }

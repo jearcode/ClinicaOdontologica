@@ -1,6 +1,8 @@
 package com.dh.clinicaodontologica.controller;
 
 import com.dh.clinicaodontologica.entity.Odontologo;
+import com.dh.clinicaodontologica.exception.MatriculaAlreadyRegisteredException;
+import com.dh.clinicaodontologica.exception.ResourceNotFoundException;
 import com.dh.clinicaodontologica.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,46 +19,56 @@ public class OdontologoController {
     private OdontologoService odontologoService;
 
     @PostMapping
-    public ResponseEntity<Odontologo> guardarOdontologo(@RequestBody Odontologo odontologo){
-        return new ResponseEntity<>(odontologoService.guardarOdontologo(odontologo), HttpStatus.CREATED);
+    public ResponseEntity<Odontologo> guardarOdontologo(@RequestBody Odontologo odontologo) throws MatriculaAlreadyRegisteredException {
+        if(odontologoService.existeOdontologoConMatricula(odontologo.getMatricula())){
+            throw new MatriculaAlreadyRegisteredException();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(odontologoService.guardarOdontologo(odontologo));
     }
 
     @GetMapping("/buscar-id/{id}")
-    public ResponseEntity<Optional<Odontologo>> buscarPorID(@PathVariable Long id){
-        return ResponseEntity.ok(odontologoService.buscarPorID(id));
+    public ResponseEntity<Optional<Odontologo>> buscarPorID(@PathVariable Long id) throws ResourceNotFoundException {
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorID(id);
+        if(!odontologoBuscado.isPresent()){
+            throw new ResourceNotFoundException("Odontólogo no encontrado");
+        }
+        return ResponseEntity.ok(odontologoBuscado);
     }
 
     @GetMapping("/buscar-matricula/{matricula}")
-    public ResponseEntity<Optional<Odontologo>> buscarPorMatricula(@PathVariable String matricula){
-        return ResponseEntity.ok(odontologoService.buscarPorMatricula(matricula));
+    public ResponseEntity<Optional<Odontologo>> buscarPorMatricula(@PathVariable String matricula) throws ResourceNotFoundException{
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorMatricula(matricula);
+        if(!odontologoBuscado.isPresent()){
+            throw new ResourceNotFoundException("Odontólogo no encontrado");
+        }
+        return ResponseEntity.ok(odontologoBuscado);
     }
 
     @PutMapping
-    public ResponseEntity<String> actualizarOdontologo(@RequestBody Odontologo odontologo){
+    public ResponseEntity<String> actualizarOdontologo(@RequestBody Odontologo odontologo) throws ResourceNotFoundException, MatriculaAlreadyRegisteredException{
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorID(odontologo.getId());
-        ResponseEntity<String> responseEntity;
-        if(odontologoBuscado.isPresent()){
-            odontologoService.actualizarOdontologo(odontologo);
-            responseEntity = new ResponseEntity<>("Odontólogo actualizado exitosamente", HttpStatus.OK);
+        if (odontologoBuscado.isPresent()) {
+            if (odontologoService.existeOdontologoConMatricula(odontologo.getMatricula()) &&
+                    !odontologoBuscado.get().getMatricula().equals(odontologo.getMatricula())) {
+                throw new MatriculaAlreadyRegisteredException();
+            } else {
+                odontologoService.actualizarOdontologo(odontologo);
+                return ResponseEntity.ok("Odontologo actualizado exitosamente");
+            }
+        } else {
+            throw new ResourceNotFoundException("Odontólogo no encontrado");
         }
-        else{
-            responseEntity = new ResponseEntity<>("No se encontró el odontólogo", HttpStatus.NOT_FOUND);
-        }
-        return responseEntity;
+
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id){
+    public ResponseEntity<String> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException{
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorID(id);
-        ResponseEntity<String> responseEntity;
-        if(odontologoBuscado.isPresent()){
-            odontologoService.eliminarOdontologo(id);
-            responseEntity = new ResponseEntity<>("Odontólogo eliminado exitosamente", HttpStatus.OK);
+        if(!odontologoBuscado.isPresent()){
+            throw new ResourceNotFoundException("Odontólogo no encontrado");
         }
-        else{
-            responseEntity = new ResponseEntity<>("No se encontró el odontólogo", HttpStatus.NOT_FOUND);
-        }
-        return responseEntity;
+        odontologoService.eliminarOdontologo(id);
+        return ResponseEntity.ok("Odontologo actualizado exitosamente");
     }
 
     @GetMapping

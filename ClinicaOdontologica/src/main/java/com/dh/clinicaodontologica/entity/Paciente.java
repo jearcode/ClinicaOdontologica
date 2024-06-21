@@ -1,12 +1,9 @@
 package com.dh.clinicaodontologica.entity;
 
-
-import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @Getter
 @Setter

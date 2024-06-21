@@ -1,6 +1,7 @@
 package com.dh.clinicaodontologica.controller;
 
 import com.dh.clinicaodontologica.entity.Paciente;
+import com.dh.clinicaodontologica.exception.EmailAlreadyRegisteredException;
 import com.dh.clinicaodontologica.exception.ResourceNotFoundException;
 import com.dh.clinicaodontologica.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,80 +19,58 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @PostMapping
-    public ResponseEntity<?> guardarPaciente(@RequestBody Paciente paciente) {
-        ResponseEntity<?> responseEntity;
-        if (pacienteService.existeEmail(paciente.getEmail())) {
-            responseEntity = ResponseEntity.status(HttpStatus.CONFLICT).body("El email ya está registrado.");
+    public ResponseEntity<?> guardarPaciente(@RequestBody Paciente paciente) throws EmailAlreadyRegisteredException {
+        if (pacienteService.existePacienteConEmail(paciente.getEmail())) {
+            throw new EmailAlreadyRegisteredException();
         } else {
             Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
-            responseEntity = ResponseEntity.status(HttpStatus.CREATED).body(pacienteGuardado);
+            return ResponseEntity.status(HttpStatus.CREATED).body(pacienteGuardado);
         }
-
-        return responseEntity;
     }
 
     @GetMapping("/buscar-id/{id}")
-    public ResponseEntity<Optional<Paciente>> buscarPaciente(@PathVariable Long id) {
-        return ResponseEntity.ok(pacienteService.buscarPorID(id));
+    public ResponseEntity<Optional<Paciente>> buscarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(id);
+        if(!pacienteBuscado.isPresent()){
+            throw new ResourceNotFoundException("Paciente no encontrado");
+        }
+        return ResponseEntity.ok(pacienteBuscado);
     }
 
     @GetMapping("/buscar-email/{email}")
-    public ResponseEntity<?> buscarPorEmail(@PathVariable String email) {
-        ResponseEntity<?> responseEntity;
+    public ResponseEntity<?> buscarPorEmail(@PathVariable String email) throws ResourceNotFoundException{
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorEmail(email);
-        if (pacienteBuscado.isPresent()) {
-            responseEntity = ResponseEntity.ok(pacienteService.buscarPorEmail(email));
-        } else {
-            responseEntity = ResponseEntity.notFound().build();
+        if(!pacienteBuscado.isPresent()){
+            throw new ResourceNotFoundException("Paciente no encontrado");
         }
-        return responseEntity;
+        return ResponseEntity.ok(pacienteService.buscarPorEmail(email));
     }
 
     @PutMapping
-    public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente) {
-        ResponseEntity<String> responseEntity;
+    public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente) throws ResourceNotFoundException, EmailAlreadyRegisteredException {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(paciente.getId());
-
         if (pacienteBuscado.isPresent()) {
-            if (pacienteService.existeEmail(paciente.getEmail()) &&
+            if (pacienteService.existePacienteConEmail(paciente.getEmail()) &&
                     !pacienteBuscado.get().getEmail().equals(paciente.getEmail())) {
-                responseEntity = ResponseEntity.status(HttpStatus.CONFLICT)
-                        .body("El email ya está registrado.");
+                throw new EmailAlreadyRegisteredException();
             } else {
                 pacienteService.actualizarPaciente(paciente);
-                responseEntity = ResponseEntity.ok("Paciente actualizado con éxito");
+                return ResponseEntity.ok("Paciente actualizado con éxito");
             }
         } else {
-            responseEntity = ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Paciente no encontrado.");
+            throw new ResourceNotFoundException("Paciente no encontrado");
         }
 
-        return responseEntity;
     }
 
-
-/*    @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
-        ResponseEntity<String> responseEntity;
-        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(id);
-        if (pacienteBuscado.isPresent()) {
-            pacienteService.eliminarPaciente(id);
-            responseEntity = ResponseEntity.ok("Paciente eliminado con éxito");
-        } else {
-            responseEntity = ResponseEntity.badRequest().build();
-        }
-        return responseEntity;
-    }*/
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
-        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(id);
-        if(pacienteBuscado.isPresent()){
-            pacienteService.eliminarPaciente(id);
-            return ResponseEntity.ok("paciente eliminado con exito");
-        }else{
-            //aca lanzamos la exception
-            throw new ResourceNotFoundException("No existe ese id : "+id);
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException{
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(id);
+        if(!pacienteBuscado.isPresent()){
+            throw new ResourceNotFoundException("Paciente no encontrado");
         }
+        pacienteService.eliminarPaciente(id);
+        return ResponseEntity.ok("Paciente eliminado con éxito");
     }
 
     @GetMapping
