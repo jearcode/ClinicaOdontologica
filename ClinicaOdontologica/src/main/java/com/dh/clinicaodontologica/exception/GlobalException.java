@@ -21,6 +21,6 @@ public class GlobalException {
     }
     @ExceptionHandler({MatriculaAlreadyRegisteredException.class})
     public ResponseEntity<?> tratamientoMatriculaAlreadyRegisteredException(MatriculaAlreadyRegisteredException ex){
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorResponse(HttpStatus.CONFLICT, "La matricula ya se encuentra esta registrada"));
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorResponse(HttpStatus.CONFLICT, "La matricula ya se encuentra registrada"));
     }
 }
