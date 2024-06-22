@@ -25,7 +25,9 @@ window.addEventListener("load", function () {
         if (response.ok) {
           return Promise.resolve("Eliminado correctamente");
         } else {
-          return Promise.reject("Error al eliminar");
+          return response.json().then(body => {
+            throw new Error(body.message);
+          });
         }
       })
       .then((data) => {
@@ -50,7 +52,7 @@ window.addEventListener("load", function () {
           toast: true,
           icon: "error",
           title: "Error",
-          text: `Hubo un problema con la operación: ${error.message}`,
+          text: error.message,
           background: "var(--color-card-background)",
           color: "var(--color-text-secondary)",
           showConfirmButton: false,

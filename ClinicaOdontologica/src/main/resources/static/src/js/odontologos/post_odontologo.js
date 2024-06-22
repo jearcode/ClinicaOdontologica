@@ -19,8 +19,7 @@ window.addEventListener('load', function () {
             nombre: document.querySelector('#nombre-add').value,
             apellido: document.querySelector('#apellido-add').value,
         };
-        // Invocamos utilizando la función fetch la API de odontólogos con el método POST que guardará
-        // al odontólogo que enviaremos en formato JSON
+        // Invocamos utilizando la función fetch la API de odontólogos con el método POST que guardará al odontólogo que enviaremos en formato JSON
         const url = '/odontologos';
         const settings = {
             method: 'POST',
@@ -32,10 +31,17 @@ window.addEventListener('load', function () {
 
         fetch(url, settings)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al agregar el odontólogo');
+                if (response.ok) {
+                    // Eliminación exitosa
+                    return Promise.resolve("Eliminado correctamente");
+                } else {
+                    /* Si hay un error lo que hacemos es manejar la respuesta del back
+                    Usando: response.json().then(body => { throw new Error(body.message); });
+                    Esto asegura que se capture el mensaje de error enviado por el servidor en caso de un problema */
+                    return response.json().then(body => {
+                        throw new Error(body.message);
+                    });
                 }
-                return response.json();
             })
             .then(data => {
                 // Mensaje de éxito con SweetAlert2
@@ -56,7 +62,7 @@ window.addEventListener('load', function () {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error al agregar el odontólogo',
-                    text: 'Por favor, inténtelo nuevamente.',
+                    text: error.message,
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,

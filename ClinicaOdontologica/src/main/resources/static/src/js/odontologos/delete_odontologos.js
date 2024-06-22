@@ -19,7 +19,9 @@ function deleteBy(id) {
                         // Eliminación exitosa
                         return Promise.resolve("Eliminado correctamente");
                     } else {
-                        return Promise.reject('Error al eliminar');
+                        return response.json().then(body => {
+                            throw new Error(body.message);
+                        });
                     }
                 })
                 .then(data => {
@@ -44,7 +46,7 @@ function deleteBy(id) {
                     // Mostrar una alerta de error si la eliminación falla
                     Swal.fire({
                         title: "Error",
-                        text: "Hubo un problema al intentar eliminar el registro.",
+                        text: error.message,
                         icon: "error",
                         background: 'var(--color-card-background)',
                         color: 'var(--color-text-secondary)',
