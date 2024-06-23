@@ -51,6 +51,7 @@ public class WebSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login.html")
                         .loginProcessingUrl("/login")
+                        .failureUrl("/login.html?error=true")
                         .successHandler(new CustomAuthenticationSuccessHandler())
                         .permitAll()
                 )

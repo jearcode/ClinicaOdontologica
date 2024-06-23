@@ -20,6 +20,13 @@
             </div>
             <div class="form-box">
                 <h2>Ingresa a tu cuenta</h2>
+                
+                <div id="error-message" class="alert alert-danger" style="display: none;">
+                    <!-- Mensaje de error -->
+                </div> 
+                <div id="logout-message" class="alert alert-success" style="display: none;">
+                    <!-- Mensaje de logout -->
+                </div> 
                 <div class="input-box">
                     <p>Nombre</p>
                     <input type="text" placeholder="Ingresa tu nombre" name="username" required />
@@ -28,16 +35,32 @@
                     <p>Contraseña</p>
                     <input type="password" placeholder="Ingresa tu contraseña" name="password" required />
                 </div>
-                
             </div>
             <button type="submit" class="btn-login">Ingresar</button>
         </div>
     </form>
     <div class ="side-content">
         <img src="./src/assets/img/limpieza-de-dientes.png" alt="">
-        <H1>FreshDent</H1>
+        <h1>FreshDent</h1>
     </div>
-    
+    <!-- SCRIPT PARA MANEJAR ERRORES -->
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('error')) {
+                const errorMessage = document.getElementById('error-message');
+                errorMessage.innerText = 'Credenciales inválidas, por favor intente nuevamente.';
+                errorMessage.style.display = 'block';
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            if (params.has('logout')) {
+                const logoutMessage = document.getElementById('logout-message');
+                logoutMessage.innerText = 'Sesión cerrada con éxito.';
+                logoutMessage.style.display = 'block';
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        };
+    </script>
 </body>
 
 </html>
