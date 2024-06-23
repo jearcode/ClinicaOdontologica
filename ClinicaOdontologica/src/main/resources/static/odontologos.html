@@ -49,7 +49,19 @@
         <span><i class="fas fa-sun"></i></span>
         <span><i class="fas fa-moon"></i></span>
       </button>
-      <button class="user" id="user"><i class="fa-regular fa-circle-user"></i></button>
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="user-initial" id="user-initial"></div>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="user_data" id="user_data">
+            <div id="user-name"></div>
+            <div id="user-email"></div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <button class="logout-button dropdown-item btn btn-danger" onclick="logout()">Cerrar sesión</button>
+        </div>
+      </div>
     </article>
   </header>
   <main>
@@ -161,6 +173,7 @@
     </div>
   </main>
   <footer></footer>
+  <script src="./src/components/js/profile.js"></script>
   <script src="./src/components/js/switch.js"></script>
   <script src="./src/components/js/mayuscula.js"></script>
   <script src="https://kit.fontawesome.com/da3ee720fd.js" crossorigin="anonymous"></script>
