@@ -40,9 +40,11 @@ public class WebSecurityConfig {
                         //API para obtener los datos del usuario autenticado
                         .requestMatchers("/api/userinfo").authenticated()
                         // Rutas que permiten acceso público
-                        .requestMatchers("/src/assets/**", "/src/components/**", "src/styles/**").permitAll()
+                        .requestMatchers("/src/assets/**", "/src/components/**", "/src/styles/**").permitAll()
                         // Rutas que requieren rol ADMIN
-                        .requestMatchers("/index.html", "/odontologos.html", "/pacientes.html", "/src/**").hasRole("ADMIN")
+                        .requestMatchers("/index.html", "/odontologos.html", "/pacientes.html", "/src/**",
+                                "/pacientes/**", "/odontologos/**").hasRole(
+                                "ADMIN")
                         // Rutas que requieren rol USER
                         .requestMatchers("/turnos.html", "/src/js/turnos/**").hasAnyRole("USER", "ADMIN")
                         // Cualquier otra ruta requiere autenticación
@@ -55,7 +57,9 @@ public class WebSecurityConfig {
                         .successHandler(new CustomAuthenticationSuccessHandler())
                         .permitAll()
                 )
-                .logout(Customizer.withDefaults());
+                .logout(Customizer.withDefaults())
+                .exceptionHandling(exception -> exception
+                        .accessDeniedPage("/403.html"));
         return http.build();
 
     }
