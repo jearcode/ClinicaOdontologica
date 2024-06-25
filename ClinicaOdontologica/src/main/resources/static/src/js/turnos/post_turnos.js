@@ -15,8 +15,12 @@ window.addEventListener('load', function () {
 
         // Creamos un JSON que tendrá los datos del nuevo turno
         const formData = {
-            paciente: document.querySelector('#nombreOdontologo-add').value,
-            odontologo: document.querySelector('#nombreOdontologo-add').value,
+            paciente: {
+                id: document.querySelector('#nombrePaciente-add').value
+            },
+            odontologo: {
+                id: document.querySelector('#nombreOdontologo-add').value
+            },
             fecha: document.querySelector('#fechaTurno-add').value,
         };
         // Invocamos utilizando la función fetch la API de turnos con el método POST que guardará al turno que enviaremos en formato JSON

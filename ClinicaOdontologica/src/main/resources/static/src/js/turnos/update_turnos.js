@@ -6,9 +6,13 @@ window.addEventListener("load", function () {
         let turnoId = document.querySelector("#turno_id").value;
         const formData = {
             id: turnoId,
-            paciente: document.querySelector("#nombrePaciente").value,
-            odontologo: document.querySelector("#nombreOdontologo").value,
-            fecha: document.querySelector("#fechaTurno").value,
+            paciente: {
+                id: document.querySelector('#nombrePaciente').value
+            },
+            odontologo: {
+                id: document.querySelector('#nombreOdontologo').value
+            },
+            fecha: document.querySelector('#fechaTurno').value,
         };
 
         const url = "/turnos";
@@ -169,18 +173,18 @@ function updateTableTurno() {
                     // Primero los datos del odontólogo
                     // Luego los botones de editar y eliminar
                     
-                    const odontologo = `${turno.odontologo.nombre} ${turno.odontologo.apelllido}`;
+                    const odontologo = `${turno.odontologo.nombre} ${turno.odontologo.apellido}`;
                     const paciente = `${turno.paciente.nombre} ${turno.paciente.apellido}`;
 
                     turnoRow.innerHTML =
                         "<td>" +
                         turno.id +
                         "</td>" +
-                        '<td class="td_paciente">' +
-                        paciente.toUpperCase() +
-                        "</td>" +
                         '<td class="td_odontologo">' +
                         odontologo.toUpperCase() +
+                        "</td>" +
+                        '<td class="td_paciente">' +
+                        paciente.toUpperCase() +
                         "</td>" +
                         '<td class="td_fechaTurno">' +
                         turno.fecha +

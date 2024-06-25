@@ -395,7 +395,7 @@ main {
   display: none;
 }
 
-#odontologo_updating {
+#turno_updating {
   background-color: var(--card-background-color);
   border: var(--card-border-color);
   box-shadow: var(--card-box-shadow);
