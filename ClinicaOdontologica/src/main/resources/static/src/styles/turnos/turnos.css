@@ -428,6 +428,46 @@ main {
   color: var(--color-placeholder-text);
 }
 
+.form-select {
+  background-color: var(--color-placeholder-background);
+  /* Fondo del input */
+  border: var(--color-border-input);
+  /* Borde */
+  color: var(--color-placeholder-text-intro);
+  /* Color del texto cuando ya se ha escrito */
+  margin-bottom: 10px;
+  appearance: none;
+  /* Eliminar estilos por defecto del navegador */
+  -webkit-appearance: none;
+  /* Compatibilidad con navegadores WebKit */
+  -moz-appearance: none;
+  /* Compatibilidad con Firefox */
+  padding-right: 30px;
+  /* Espacio para la flecha */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23aaa" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  /* Posición de la flecha */
+  background-size: 24px;
+  /* Tamaño de la flecha */
+}
+
+.form-select:focus {
+  background-color: var(--color-placeholder-background);
+  border-color: var(--color-button-save-background-hover);
+  /* Borde cuando está enfocado */
+  color: var(--color-input-text);
+  /* Color del texto cuando está enfocado */
+}
+
+.form-select::-moz-placeholder {
+  color: var(--color-placeholder-text);
+}
+
+.form-select::placeholder {
+  color: var(--color-placeholder-text);
+}
+
 .form-group > label {
   color: var(--color-text-secondary);
   font-weight: 600;
