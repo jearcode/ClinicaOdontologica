@@ -47,7 +47,7 @@ function construirSelectsPacientes(pacientes) {
 
 // Función para obtener odontólogos
 function obtenerOdontologos() {
-    const urlOdontologos = "/odontologos";
+    const urlOdontologos = "/odontologos/listar-todos";
     const settingsOdontologos = {
         method: "GET",
     };
@@ -83,7 +83,7 @@ function obtenerOdontologos() {
 
 // Función para obtener pacientes
 function obtenerPacientes() {
-    const urlPacientes = "/pacientes";
+    const urlPacientes = "/pacientes/listar-todos";
     const settingsPacientes = {
         method: "GET",
     };

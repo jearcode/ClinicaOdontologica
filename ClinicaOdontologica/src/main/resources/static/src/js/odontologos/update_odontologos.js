@@ -120,7 +120,7 @@ function findBy(id) {
 }
 
 function updateTable() {
-  const url = "/odontologos";
+  const url = "/odontologos/listar-todos";
   const settings = {
     method: "GET",
   };

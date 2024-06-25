@@ -108,7 +108,7 @@ function findBy(id) {
 }
 
 function updateTable() {
-    const url = "/pacientes";
+    const url = "/pacientes/listar-todos";
     const settings = {
         method: "GET",
     };

@@ -41,7 +41,7 @@ public class TurnoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(turnoService.guardarTurno(turno));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar-id/{id}")
     public ResponseEntity<Optional<Turno>> buscarPorID(@PathVariable Long id) throws ResourceNotFoundException{
         Optional<Turno> turnoBuscado = turnoService.buscarPorID(id);
         if(turnoBuscado.isPresent()){
@@ -73,7 +73,7 @@ public class TurnoController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/listar-todos")
     public ResponseEntity<List<Turno>> listarTodos(){
         return ResponseEntity.ok(turnoService.listarTodos());
     }

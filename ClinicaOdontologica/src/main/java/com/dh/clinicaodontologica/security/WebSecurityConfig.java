@@ -41,12 +41,29 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/userinfo").authenticated()
                         // Rutas que permiten acceso público
                         .requestMatchers("/src/assets/**", "/src/components/**", "/src/styles/**").permitAll()
-                        // Rutas que requieren rol ADMIN
-                        .requestMatchers("/index.html", "/odontologos.html", "/pacientes.html", "/src/**",
-                                "/pacientes/**", "/odontologos/**").hasRole(
-                                "ADMIN")
                         // Rutas que requieren rol USER
-                        .requestMatchers("/turnos.html", "/src/js/turnos/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(
+                                "/turnos.html",
+                                "/turnos/listar-todos",
+                                "/turnos/buscar-id/**",
+                                "/turnos",
+                                "/src/js/turnos/get_turnos.js",
+                                "/src/js/turnos/post_turnos.js",
+                                "/src/components/listaOdontologosPacientes.js",
+                                "/pacientes/listar-todos",
+                                "/odontologos/listar-todos").hasAnyRole("USER",
+                                "ADMIN")
+                        // Rutas que requieren rol ADMIN
+                        .requestMatchers("/index.html", "/odontologos.html", "/pacientes.html",
+                                "/src/js/turnos/delete_turnos.js",
+                                "/src/js/turnos/update_turnos.js",
+                                "/pacientes",
+                                "/pacientes/**",
+                                "/odontologos/**",
+                                "/odontologos",
+                                "/turnos/**",
+                                "/turnos").hasRole(
+                                "ADMIN")
                         // Cualquier otra ruta requiere autenticación
                         .anyRequest().authenticated()
                 )

@@ -71,7 +71,7 @@ public class OdontologoController {
         return ResponseEntity.ok("Odontologo actualizado exitosamente");
     }
 
-    @GetMapping
+    @GetMapping("/listar-todos")
     public ResponseEntity<List<Odontologo>> listarTodos(){
         return ResponseEntity.ok(odontologoService.listarTodos());
     }

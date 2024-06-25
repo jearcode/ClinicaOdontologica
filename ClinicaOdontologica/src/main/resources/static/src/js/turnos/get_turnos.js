@@ -2,7 +2,7 @@ window.addEventListener("load", function () {
     (function () {
         // Con fetch invocamos a la API de turnos con el método GET
         // Nos devolverá un JSON con una colección de turnos
-        const url = "/turnos";
+        const url = "/turnos/listar-todos";
         const settings = {
             method: "GET",
         };

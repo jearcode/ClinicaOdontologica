@@ -73,7 +73,7 @@ public class PacienteController {
         return ResponseEntity.ok("Paciente eliminado con éxito");
     }
 
-    @GetMapping
+    @GetMapping("/listar-todos")
     public ResponseEntity<List<Paciente>> listarTodos() {
         return ResponseEntity.ok(pacienteService.listarTodos());
     }

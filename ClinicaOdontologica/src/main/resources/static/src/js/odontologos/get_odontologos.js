@@ -2,7 +2,7 @@ window.addEventListener("load", function () {
     (function () {
         // Con fetch invocamos a la API de odontólogos con el método GET
         // Nos devolverá un JSON con una colección de odontólogos
-        const url = "/odontologos";
+        const url = "/odontologos/listar-todos";
         const settings = {
             method: "GET",
         };
