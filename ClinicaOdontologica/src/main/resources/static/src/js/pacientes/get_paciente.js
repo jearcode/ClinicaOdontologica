@@ -50,6 +50,7 @@ window.addEventListener("load", function () {
                     // Armamos cada columna de la fila
                     // Primero los datos del paciente
                     // Luego los botones de editar y eliminar
+                     const domicilio = `${paciente.domicilio.calle} ${paciente.domicilio.numero} ${paciente.domicilio.localidad} ${paciente.domicilio.provincia}`
                     pacienteRow.innerHTML =
                         "<td>" +
                         paciente.id +
@@ -67,7 +68,7 @@ window.addEventListener("load", function () {
                         paciente.fechaIngreso +
                         "</td>" +
                         '<td class="td_domicilio">' +
-                        paciente.domicilio.toUpperCase() +
+                        domicilio.toUpperCase() +
                         "</td>" +
                         '<td class="td_email">' +
                         paciente.email.toUpperCase() +

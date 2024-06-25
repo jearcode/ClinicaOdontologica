@@ -20,7 +20,7 @@ window.addEventListener("load", function () {
             fechaIngreso: document.querySelector("#fechaIngreso").value,
             domicilio: {
                 calle: document.querySelector("#calle").value,
-                numero: document.querySelector("#numero").value,
+                numero: document.querySelector("#numero_calle").value,
                 localidad: document.querySelector("#localidad").value,
                 provincia: document.querySelector("#provincia").value,
             },
@@ -63,7 +63,7 @@ window.addEventListener("load", function () {
                 console.error("Error:", error);
                 Swal.fire({
                     icon: "error",
-                    title: "Error al agregar el paciente",
+                    title: "Error al actualizar el paciente",
                     text: error.message,
                     showConfirmButton: false,
                     timer: 3000,
@@ -90,18 +90,14 @@ function findBy(id) {
             document.querySelector("#apellido").value = paciente.apellido;
             document.querySelector("#cedula").value = paciente.cedula;
             document.querySelector("#fechaIngreso").value = paciente.fechaIngreso;
-            if (paciente.domicilio) {
-                document.querySelector("#calle").value = paciente.domicilio.calle;
-                document.querySelector("#numero").value = paciente.domicilio.numero;
-                document.querySelector("#localidad").value =
-                    paciente.domicilio.localidad; // Suponiendo que localidad tiene un ID
-                document.querySelector("#provincia").value =
-                    paciente.domicilio.provincia; // Suponiendo que provincia tiene un ID
-            }
-            document.querySelector("#email").value = paciente.email;
+            document.querySelector('#email').value = paciente.email;
+            document.querySelector('#calle').value = paciente.domicilio.calle;
+            document.querySelector('#numero_calle').value = paciente.domicilio.numero;
+            document.querySelector('#localidad').value = paciente.domicilio.localidad;
+            document.querySelector('#provincia').value = paciente.domicilio.provincia;
 
             //Abrir modal
-            const modal = document.getElementById('update-paciente');
+            const modal = new bootstrap.Modal(document.getElementById('update-paciente'))
             modal.show();
 
             
@@ -111,7 +107,7 @@ function findBy(id) {
         });
 }
 
-function updateTablePaciente() {
+function updateTable() {
     const url = "/pacientes";
     const settings = {
         method: "GET",
@@ -120,9 +116,9 @@ function updateTablePaciente() {
     fetch(url, settings)
         .then((response) => response.json())
         .then((data) => {
+            const tableBody = document.getElementById("pacienteTableBody");
             tableBody.innerHTML = ""; // Limpiar contenido actual de la tabla
             data.forEach((paciente) => {
-                var tableBody = document.getElementById("pacienteTableBody");
                     var pacienteRow = tableBody.insertRow();
                     let tr_id = "tr_" + paciente.id;
                     pacienteRow.id = tr_id;
@@ -158,6 +154,7 @@ function updateTablePaciente() {
                     // Armamos cada columna de la fila
                     // Primero los datos del paciente
                     // Luego los botones de editar y eliminar
+                    const domicilio = `${paciente.domicilio.calle} ${paciente.domicilio.numero} ${paciente.domicilio.localidad} ${paciente.domicilio.provincia}`
                     pacienteRow.innerHTML =
                         "<td>" +
                         paciente.id +
@@ -175,7 +172,7 @@ function updateTablePaciente() {
                         paciente.fechaIngreso +
                         "</td>" +
                         '<td class="td_domicilio">' +
-                        paciente.domicilio.toUpperCase() +
+                        domicilio.toUpperCase() +
                         "</td>" +
                         '<td class="td_email">' +
                         paciente.email.toUpperCase() +

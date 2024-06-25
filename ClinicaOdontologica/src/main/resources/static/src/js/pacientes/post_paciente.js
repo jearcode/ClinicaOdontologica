@@ -62,7 +62,7 @@ window.addEventListener('load', function () {
                     background: 'var(--color-card-background)',
                     color: 'var(--color-text-secondary)',
                 });
-                updateTablePaciente()
+                updateTable()
                 formulario.reset();
             })
             .catch(error => {
