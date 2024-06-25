@@ -9,3 +9,6 @@ const fechaActual = new Date();
     // Asignar la fecha actual al atributo max del input
     const inputFecha = document.getElementById('fechaIngreso-add');
     inputFecha.setAttribute('max', fechaFormateada);
+
+    const inputFecha2 = document.getElementById('fechaTurno-add');
+    inputFecha2.setAttribute('max', fechaFormateada);

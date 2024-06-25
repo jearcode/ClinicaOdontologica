@@ -51,17 +51,17 @@
             </button>
             <div class="dropdown">
                 <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <div class="user-initial" id="user-initial"></div>
+                    <div class="user-initial" id="user-initial"></div>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <div class="user_data" id="user_data">
-                    <div id="user-name"></div>
-                    <div id="user-email"></div>
-                  </div>
-                  <div class="dropdown-divider"></div>
-                  <button class="logout-button dropdown-item btn btn-danger" onclick="logout()">Cerrar sesión</button>
+                    <div class="user_data" id="user_data">
+                        <div id="user-name"></div>
+                        <div id="user-email"></div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <button class="logout-button dropdown-item btn btn-danger" onclick="logout()">Cerrar sesión</button>
                 </div>
-              </div>
+            </div>
         </article>
     </header>
     <main>
@@ -133,34 +133,37 @@
                         <form id="add_new_paciente">
                             <div class="form-group">
                                 <label>Nombre:</label>
-                                <input type="text" class="form-control" placeholder="Nombre" id="nombre-add" required />
+                                <input type="text" class="form-control" placeholder="Nombre" id="nombre-add"
+                                    oninput="toUpperCaseInput(event)" required />
                             </div>
                             <div class="form-group">
                                 <label>Apellido:</label>
                                 <input type="text" class="form-control" placeholder="Apellido" id="apellido-add"
-                                    required />
+                                    oninput="toUpperCaseInput(event)" required />
                             </div>
                             <div class="form-group">
                                 <label>Cédula:</label>
-                                <input type="text" class="form-control" placeholder="Cédula" id="cedula-add" required />
+                                <input type="number" class="form-control" placeholder="Cédula" id="cedula-add" required />
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Ingreso:</label>
-                                <input type="date" class="form-control" id="fechaIngreso-add" name="fechaIngreso" max=""
-                                    required />
+                                <input type="date" class="form-control" id="fechaIngreso-add" max="" required />
                             </div>
                             <div class="form-group">
                                 <label>Domicilio:</label>
-                                <input type="text" class="form-control" placeholder="Calle" id="calle-add" required />
-                                <input type="text" class="form-control" placeholder="Número" id="numero-add" required />
-                                <input type="text" class="form-control" placeholder="Localidad" id="localidad-add"
-                                    required />
-                                <input type="text" class="form-control" placeholder="Provincia" id="provincia-add"
-                                    required />
+                                <input type="text" class="form-control" placeholder="Calle" id="calle-add"
+                                    oninput="toUpperCaseInput(event)" required />
+                                <input type="number" class="form-control" placeholder="Número" min="1" id="numero-add" required />
+                                    <select class="form-select" id="localidad-add"> 
+                                        <option value="" disabled selected>Seleccione una localidad</option>
+                                    </select>
+                                    <select class="form-select" id="provincia-add"> 
+                                        <option value="" disabled selected>Seleccione una provincia</option>
+                                    </select>
                             </div>
                             <div class="form-group">
                                 <label>Email:</label>
-                                <input type="text" class="form-control" placeholder="Email" id="email-add" required />
+                                <input type="email" class="form-control" placeholder="Email" id="email-add" required />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -190,34 +193,37 @@
                             </div>
                             <div class="form-group">
                                 <label>Nombre:</label>
-                                <input type="text" class="form-control" placeholder="Nombre" id="nombre-add" oninput="toUpperCaseInput(event)" required />
+                                <input type="text" class="form-control" placeholder="Nombre" id="nombre"
+                                    oninput="toUpperCaseInput(event)" />
                             </div>
                             <div class="form-group">
                                 <label>Apellido:</label>
-                                <input type="text" class="form-control" placeholder="Apellido" id="apellido-add" oninput="toUpperCaseInput(event)"
-                                    required />
+                                <input type="text" class="form-control" placeholder="Apellido" id="apellido"
+                                    oninput="toUpperCaseInput(event)" />
                             </div>
                             <div class="form-group">
                                 <label>Cédula:</label>
-                                <input type="text" class="form-control" placeholder="Cédula" id="cedula-add" oninput="toUpperCaseInput(event)" required />
+                                <input type="number" class="form-control" placeholder="Cédula" id="cedula"/>
                             </div>
                             <div class="form-group">
                                 <label>Fecha de Ingreso:</label>
-                                <input type="date" class="form-control" id="fechaIngreso-add" name="fechaIngreso" max="" oninput="toUpperCaseInput(event)"
-                                    required />
+                                <input type="date" class="form-control" id="fechaIngreso" max=""/>
                             </div>
                             <div class="form-group">
                                 <label>Domicilio:</label>
-                                <input type="text" class="form-control" placeholder="Calle" id="calle-add" oninput="toUpperCaseInput(event)" required />
-                                <input type="text" class="form-control" placeholder="Número" id="numero-add" oninput="toUpperCaseInput(event)" required />
-                                <input type="text" class="form-control" placeholder="Localidad" id="localidad-add" oninput="toUpperCaseInput(event)"
-                                    required />
-                                <input type="text" class="form-control" placeholder="Provincia" id="provincia-add" oninput="toUpperCaseInput(event)"
-                                    required />
+                                <input type="text" class="form-control" placeholder="Calle" id="calle"
+                                    oninput="toUpperCaseInput(event)"  />
+                                <input type="number" class="form-control" placeholder="Número" id="numero"/>
+                                <select class="form-select" id="localidad"> 
+                                    <option value="" disabled selected>Seleccione una localidad</option>
+                                </select>
+                                <select class="form-select" id="provincia"> 
+                                    <option value="" disabled selected>Seleccione una provincia</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Email:</label>
-                                <input type="text" class="form-control" placeholder="Email" id="email-add" oninput="toUpperCaseInput(event)" required />
+                                <input type="email" class="form-control" placeholder="Email" id="email"  />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -236,6 +242,7 @@
     <script src="./src/components/js/switch.js"></script>
     <script src="./src/components/js/fechaActual.js"></script>
     <script src="./src/components/js/mayuscula.js"></script>
+    <script src="./src/components/js/domicilios.js"></script>
     <script src="https://kit.fontawesome.com/da3ee720fd.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

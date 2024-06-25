@@ -337,12 +337,15 @@ main {
 }
 
 .table th {
-  padding: 0.25rem 0.85rem; /* Espaciado interno de las celdas de encabezado */
+  padding: 0.25rem 3rem;
+  /* Espaciado interno de las celdas de encabezado */
 }
 
 .table td {
-  padding: 0.25rem 0.85rem; /* Espaciado interno de las celdas */
-  vertical-align: middle; /* Alineación vertical */
+  padding: 0.25rem 3rem;
+  /* Espaciado interno de las celdas */
+  vertical-align: middle;
+  /* Alineación vertical */
 }
 
 /* BOTONES DE ACCION ELIMINAR O ACTUALIZAR/EDITAR */
@@ -352,7 +355,8 @@ main {
   align-items: center;
 }
 
-.btn_delete, .btn_edit {
+.btn_delete,
+.btn_edit {
   border-radius: 5px;
   margin: 0.5em 0.3em;
   border: none;
@@ -363,7 +367,8 @@ main {
   transition: var(--transition-elements);
 }
 
-.btn_delete > i, .btn_edit > i {
+.btn_delete > i,
+.btn_edit > i {
   color: white;
 }
 
@@ -390,7 +395,7 @@ main {
   display: none;
 }
 
-#paciente-updating {
+#odontologo_updating {
   background-color: var(--card-background-color);
   border: var(--card-border-color);
   box-shadow: var(--card-box-shadow);
@@ -400,16 +405,19 @@ main {
 }
 
 .form-control {
-  background-color: var(--color-placeholder-background); /* Fondo del input */
-  border: var(--color-border-input); /* Borde */
-  color: var(--color-placeholder-text-intro); /* Color del texto cuando ya se ha escrito */
-  margin-bottom: 10px;
+  background-color: var(--color-placeholder-background);
+  /* Fondo del input */
+  border: var(--color-border-input);
+  /* Borde */
+  color: var(--color-placeholder-text-intro);
 }
 
 .form-control:focus {
   background-color: var(--color-placeholder-background);
-  border-color: var(--color-button-save-background-hover); /* Borde cuando está enfocado */
-  color: var(--color-input-text); /* Color del texto cuando está enfocado */
+  border-color: var(--color-button-save-background-hover);
+  /* Borde cuando está enfocado */
+  color: var(--color-input-text);
+  /* Color del texto cuando está enfocado */
 }
 
 .form-control::-moz-placeholder {
@@ -420,49 +428,23 @@ main {
   color: var(--color-placeholder-text);
 }
 
-.form-select {
-  background-color: var(--color-placeholder-background); /* Fondo del input */
-  border: var(--color-border-input); /* Borde */
-  color: var(--color-placeholder-text-intro); /* Color del texto cuando ya se ha escrito */
-  margin-bottom: 10px;
-  appearance: none; /* Eliminar estilos por defecto del navegador */
-  -webkit-appearance: none; /* Compatibilidad con navegadores WebKit */
-  -moz-appearance: none; /* Compatibilidad con Firefox */
-  padding-right: 30px; /* Espacio para la flecha */
-  background-image: url('data:image/svg+xml;utf8,<svg fill="%23aaa" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center; /* Posición de la flecha */
-  background-size: 24px; /* Tamaño de la flecha */
-}
-
-.form-select:focus {
-  background-color: var(--color-placeholder-background);
-  border-color: var(--color-button-save-background-hover); /* Borde cuando está enfocado */
-  color: var(--color-input-text); /* Color del texto cuando está enfocado */
-}
-
-.form-select::-moz-placeholder {
-  color: var(--color-placeholder-text);
-}
-
-.form-select::placeholder {
-  color: var(--color-placeholder-text);
-}
-
 .form-group > label {
   color: var(--color-text-secondary);
   font-weight: 600;
-  margin-bottom: 10px;
 }
 
 .btn-primary {
-  background-color: var(--color-button-save-background); /* Color de fondo del botón primario */
-  border: none; /* Sin borde */
-  margin: 0.5em 0; /* Margen superior e inferior */
+  background-color: var(--color-button-save-background);
+  /* Color de fondo del botón primario */
+  border: none;
+  /* Sin borde */
+  margin: 0.5em 0;
+  /* Margen superior e inferior */
 }
 
 .btn-primary:hover {
-  background-color: var(--color-button-save-background-hover); /* Color de fondo del botón primario al pasar el ratón */
+  background-color: var(--color-button-save-background-hover);
+  /* Color de fondo del botón primario al pasar el ratón */
 }
 
 .btn-secondary {
@@ -478,8 +460,10 @@ main {
 #response {
   display: none;
   margin-top: 10px;
-  color: var(--color-button-text); /* Color del texto de respuesta */
-  text-align: center; /* Alineación del texto */
+  color: var(--color-button-text);
+  /* Color del texto de respuesta */
+  text-align: center;
+  /* Alineación del texto */
 }
 
 /* MODAL */
@@ -499,6 +483,4 @@ main {
 
 .modal-footer {
   margin-top: 0.5em;
-  align-items: center;
-  justify-content: center;
-}/*# sourceMappingURL=pacientes.css.map */
+}/*# sourceMappingURL=turnos.css.map */
