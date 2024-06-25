@@ -83,15 +83,15 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Paciente</th>
                                     <th>Odontólogo</th>
+                                    <th>Paciente</th>
                                     <th>Fecha</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody id="turnoTableBody">
                                 <!-- turnoTableBody -->
-                                <tr id="tr_1">
+                                <!-- <tr id="tr_1">
                                     <td>1</td>
                                     <td class="td_paciente">CARLOS MENDOZA</td>
                                     <td class="td_odontologo">CAMILA SAENZ</td>
@@ -105,7 +105,7 @@
                                             <i class="fa-solid fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </article>
@@ -118,20 +118,20 @@
                                 <input type="text" class="form-control" id="turno_id" readonly />
                             </div>
                             <div class="form-group">
-                                <label>Odontólogo:</label>
-                                <select name="nombreOdontologo" id="nombreOdontologo" class="form-select" required>
-                                    <option value="" disabled selected>Selecciona</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label>Paciente:</label>
                                 <select name="nombrePaciente" id="nombrePaciente" class="form-select" required>
                                     <option value="" disabled selected>Selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label>Odontólogo:</label>
+                                <select name="nombreOdontologo" id="nombreOdontologo" class="form-select" required>
+                                    <option value="" disabled selected>Selecciona</option>
+                                </select>
+                            </div>                            
+                            <div class="form-group">
                                 <label>Fecha de Turno:</label>
-                                <input type="date" class="form-control" id="fechaTurno" name="fechaTurno" max=""
+                                <input type="date" class="form-control" id="fechaTurno" name="fechaTurno" min=""
                                     oninput="toUpperCaseInput(event)"/>
                             </div>
                             <button type="button" class="btn btn-secondary" onclick="hideForm()">
@@ -156,21 +156,21 @@
                     <div class="modal-body">
                         <form id="add_new_turno">
                             <div class="form-group">
-                                <label>Odontólogo:</label>
-                                <select name="nombreOdontologo-add" id="nombreOdontologo-add" class="form-control" required>
-                                    <option value="" selected>Selecciona</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label>Paciente:</label>
                                 <select name="nombrePaciente-add" id="nombrePaciente-add" class="form-control" required>
                                     <option value="" selected>Selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label>Odontólogo:</label>
+                                <select name="nombreOdontologo-add" id="nombreOdontologo-add" class="form-control" required>
+                                    <option value="" selected>Selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Fecha de Turno:</label>
-                                <input type="date" class="form-control" id="fechaTurno-add" name="fechaTurno-add" max=""
-                                    oninput="toUpperCaseInput(event)" required />
+                                <input type="date" class="form-control" id="fechaTurno-add" name="fechaTurno-add" min=""
+                                    required />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -187,7 +187,7 @@
     <footer></footer>
     <script src="./src/components/js/profile.js"></script>
     <script src="./src/components/js/switch.js"></script>
-    <script src="./src/components/js/fechaActual.js"></script>
+    <script src="./src/components/js/fechaTurno.js"></script>
     <script src="./src/components/js/mayuscula.js"></script>
     <script src="./src/components/js/listaOdontologosPacientes.js"></script>
     <script src="https://kit.fontawesome.com/da3ee720fd.js" crossorigin="anonymous"></script>

@@ -50,7 +50,7 @@ window.addEventListener("load", function () {
                     // Armamos cada columna de la fila
                     // Primero los datos del paciente
                     // Luego los botones de editar y eliminar
-                     const domicilio = `${paciente.domicilio.calle} ${paciente.domicilio.numero} ${paciente.domicilio.localidad} ${paciente.domicilio.provincia}`
+                    const domicilio = `${paciente.domicilio.calle} ${paciente.domicilio.numero} ${paciente.domicilio.localidad} ${paciente.domicilio.provincia}`
                     pacienteRow.innerHTML =
                         "<td>" +
                         paciente.id +
