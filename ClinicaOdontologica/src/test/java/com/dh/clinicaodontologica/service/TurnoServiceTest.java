@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +30,7 @@ public class TurnoServiceTest {
                 new Domicilio("Calle falsa", 123, "La Rioja", "Argentina"), "john@doe.com");
         odontologoService.guardarOdontologo(odontologo);
         pacienteService.guardarPaciente(paciente);
-        Turno turno = new Turno(paciente, odontologo, LocalDateTime.now());
+        Turno turno = new Turno(paciente, odontologo, LocalDate.now());
         Turno turnoGuardado = turnoService.guardarTurno(turno);
         Assertions.assertEquals(1, turnoGuardado.getId());
     }
@@ -53,7 +52,7 @@ public class TurnoServiceTest {
                 new Domicilio("Calle falsa", 123, "La Rioja", "Argentina"), "emily@davis.com");
         odontologoService.guardarOdontologo(odontologo);
         pacienteService.guardarPaciente(paciente);
-        Turno turno = new Turno(id, paciente, odontologo, LocalDateTime.now());
+        Turno turno = new Turno(id, paciente, odontologo, LocalDate.now());
         turnoService.actualizarTurno(turno);
         Optional<Turno> turnoBuscado = turnoService.buscarPorID(id);
         Assertions.assertEquals(paciente.getNombre(), turnoBuscado.get().getPaciente().getNombre());

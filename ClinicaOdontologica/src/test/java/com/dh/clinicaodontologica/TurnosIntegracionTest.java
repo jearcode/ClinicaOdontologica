@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false) //Desactivamos la seguridad
@@ -40,7 +39,7 @@ public class TurnosIntegracionTest {
                 new Domicilio("Calle falsa", 123, "La Rioja", "Argentina"),
                         "john@doe.com"));
         Odontologo odontologo = odontologoService.guardarOdontologo(new Odontologo("DH1", "John", "Doe"));
-        Turno turno = turnoService.guardarTurno(new Turno(paciente, odontologo, LocalDateTime.now()));
+        Turno turno = turnoService.guardarTurno(new Turno(paciente, odontologo, LocalDate.now()));
     }
     @Test
     public void ListarTodosLosTurnosTest() throws Exception{

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -25,9 +25,9 @@ public class Turno {
     @JoinColumn(name = "odontologo_id", referencedColumnName = "id")
     private Odontologo odontologo;
     @Column
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
-    public Turno(Paciente paciente, Odontologo odontologo, LocalDateTime fecha) {
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
