@@ -26,10 +26,13 @@ public class DatosIniciales implements ApplicationRunner {
 
         String passSinCifrarA = "admin";
         String passCifradoA = passwordEncoder.encode(passSinCifrarA);
+        Usuario jorgito = new Usuario("Jorge Pereyra", "jpreyra", "jorge.pereyra@digitalhouse.com", passCifradoA,
+                UsuarioRole.ROLE_ADMIN);
         Usuario valeria = new Usuario("Valeria Muñoz", "vmunoz", "vmunoz@freshdent.com", passCifradoA, UsuarioRole.ROLE_ADMIN);
         Usuario jeremias = new Usuario("Jeremias Ibarra", "jearcode", "jearcode@freshdent.com", passCifradoA, UsuarioRole.ROLE_ADMIN);
         usuarioRepository.save(valeria);
         usuarioRepository.save(jeremias);
+        usuarioRepository.save(jorgito);
 
     }
 }
