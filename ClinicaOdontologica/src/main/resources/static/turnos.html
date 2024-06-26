@@ -91,21 +91,6 @@
                             </thead>
                             <tbody id="turnoTableBody">
                                 <!-- turnoTableBody -->
-                                <!-- <tr id="tr_1">
-                                    <td>1</td>
-                                    <td class="td_paciente">CARLOS MENDOZA</td>
-                                    <td class="td_odontologo">CAMILA SAENZ</td>
-                                    <td class="td_fechaTurno">02/07/2023</td>
-                                    <td class="actions-buttons">
-                                        <button id="btn_edit_1" type="button" onclick="findBy(1)" class="btn_edit">
-                                            <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
-                                        </button>
-                                        <button id="btn_delete_1" type="button" onclick="deleteBy(1)"
-                                            class="btn_delete">
-                                            <i class="fa-solid fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </article>
@@ -132,7 +117,7 @@
                             <div class="form-group">
                                 <label>Fecha de Turno:</label>
                                 <input type="date" class="form-control" id="fechaTurno" name="fechaTurno" min=""
-                                    oninput="toUpperCaseInput(event)"/>
+                                    oninput="toUpperCaseInput(event)" required/>
                             </div>
                             <button type="button" class="btn btn-secondary" onclick="hideForm()">
                                 Cancelar
